@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme{
+    --color-main-100: #f9f9f9;
+    --color-small-100: #aba9a9;
+    --color-second-100: #f5caab;
+    --color-third-100: #e4823c;
+    --color-fourth-100: #b58df2;
+    --color-five-100: #b58df2;
+    --color-six-100: #76a963;
+    --color-seven-100: #fdd8e0;
+    --color-nine: #fbece1;
+
+   --color-brawn-100: #b49577;
+   --color-vert-100:#83c26c;
+}
+
+/*@layer base {
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 0 0% 3.9%;
+    }
+  }
+   
+  @theme {
+    --color-background: hsl(var(--background));
+    --color-foreground: hsl(var(--foreground));
+  }
+
+  @theme inline {
+    --color-background: var(--background); // <-- Remove hsl
+    --color-foreground: var(--foreground);
+  }
+
+
+
+/*@plugin "daisyui";
+
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */

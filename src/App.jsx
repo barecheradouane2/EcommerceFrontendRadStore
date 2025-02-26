@@ -1,0 +1,41 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CustomerLayout from "./Layouts/CustomerLayout";
+import AdminLayout from "./Layouts/AdminLayout";
+import Home from "./pages/Home";
+import Shop from "./pages/Shop";
+import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import AdminDashboard from "./pages/AdminDashboard";
+import ManageProducts from "./pages/ManageProducts";
+import ManageOrders from "./pages/ManageOrders";
+import ManageUsers from "./pages/ManageUsers";
+import ManageCategories from "./pages/ManageCategories";
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        {/* Customer Routes */}
+        <Route element={<CustomerLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Route>
+
+        {/* Admin Routes */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} /> {/* Admin default page */}
+          <Route path="products" element={<ManageProducts />} />
+          <Route path="categories" element={<ManageCategories />} />
+          <Route path="orders" element={<ManageOrders />} />
+          <Route path="users" element={<ManageUsers />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
