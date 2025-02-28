@@ -11,7 +11,7 @@ function AdminHeader() {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div className="flex relative justify-between items-center p-4 shadow-lg bg-white">
+    <div className="flex  relative   justify-between items-center p-4 shadow-lg bg-white">
       
       <div>
       <h5 className="text-base font-semibold text-small-100">Welcome</h5>

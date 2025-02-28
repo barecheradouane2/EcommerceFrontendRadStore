@@ -11,6 +11,8 @@ import ManageProducts from "./pages/ManageProducts";
 import ManageOrders from "./pages/ManageOrders";
 import ManageUsers from "./pages/ManageUsers";
 import ManageCategories from "./pages/ManageCategories";
+import ManageProfile from "./pages/ManageProfile";
+import SettingsPage from "./pages/SettingsPage";
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
           <Route path="categories" element={<ManageCategories />} />
           <Route path="orders" element={<ManageOrders />} />
           <Route path="users" element={<ManageUsers />} />
+          <Route path="profile" element={<ManageProfile />} />
+          <Route path="settings" element={<SettingsPage />} />
         </Route>
       </Routes>
     </Router>
