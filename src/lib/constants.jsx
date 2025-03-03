@@ -1,5 +1,5 @@
 
-import { LayoutDashboard,Shapes,ShoppingBag,Tag,UsersRound ,CircleUser,Settings   } from "lucide-react";
+import { LayoutDashboard,Shapes,ShoppingBag,Tag,UsersRound ,CircleUser,Settings ,Store } from "lucide-react";
 
 
 export const navlinks = [
@@ -41,7 +41,12 @@ export const navlinks = [
         url:"/admin/settings",
         Icon:<Settings  />,
         lable:"Settings"
+    },{
+        url:"/admin/store",
+        Icon: <Store />   ,
+        lable:"Store"
     }
+
 
 
 ]

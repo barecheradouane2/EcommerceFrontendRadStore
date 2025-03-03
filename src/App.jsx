@@ -13,6 +13,8 @@ import ManageUsers from "./pages/ManageUsers";
 import ManageCategories from "./pages/ManageCategories";
 import ManageProfile from "./pages/ManageProfile";
 import SettingsPage from "./pages/SettingsPage";
+import ManageStore from "./pages/ManageStore";
+
 
 function App() {
   return (
@@ -36,6 +38,7 @@ function App() {
           <Route path="users" element={<ManageUsers />} />
           <Route path="profile" element={<ManageProfile />} />
           <Route path="settings" element={<SettingsPage />} />
+          <Route path="store" element={<ManageStore />} />
         </Route>
       </Routes>
     </Router>
