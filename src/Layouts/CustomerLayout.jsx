@@ -6,9 +6,9 @@ import Footer from "../components/Footer";
 
 const CustomerLayout = () => {
     return (
-      <div>
+      <div className=" px-4 lg:px-16 ">
         <Navbar />
-        <main className="container mx-auto p-4">
+        <main className="container mx-auto ">
           <Outlet />
         </main>
         <Footer />
