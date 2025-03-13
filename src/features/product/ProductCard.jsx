@@ -1,24 +1,33 @@
 import { Link } from "react-router-dom";
 import { Heart, ShoppingCart } from 'lucide-react';
+import { useState } from "react";
 
 function ProductCard({ product }) {
+
+  const [isliked, setIsLiked] = useState(false);
+
+
   return (
-    <Link to={`/product/${product.id}`} className="bg-red-500 overflow-hidden group relative">
+    <div  className="bg-red-500 overflow-hidden group relative  min-w-[250px] flex-1">
       <div className="bg-white shadow h-[380px] rounded-lg overflow-hidden relative">
         
         {/* First Image (Default) */}
+
+        <Link to={`/product/${product.id}`} className="w-full" >
         <img
           src={product.image}
           alt="product"
-          className="w-[250px] h-[250px] object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-0"
+          className=" w-full h-[250px] object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-0"
         />
 
         {/* Second Image (Shown on Hover) */}
         <img
           src={product.hoverImage}
           alt="product-hover"
-          className="w-[250px] h-[250px] object-cover absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
+          className="w-full h-[250px] object-cover absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
         />
+
+        </Link>
 
         <div className="p-4 flex flex-col gap-2">
           <h3 className="text-gray-500 text-xl font-medium flex justify-center">
@@ -45,17 +54,33 @@ function ProductCard({ product }) {
         </div>
 
         {/* Action Buttons */}
-        <div className="absolute top-3 z-10 right-[-70px] group-hover:right-2 transition-all duration-500 ease-in-out flex flex-col gap-2">
-          <div className="bg-white cursor-pointer p-2 rounded-full flex items-center justify-center">
-            <Heart className="hover:text-third-100" />
+
+
+        {
+          isliked ? (
+            <div className="absolute top-3 z-10 right-2 bg-white cursor-pointer p-2 rounded-full flex items-center justify-center">
+              <Heart className="text-third-100" onClick={() => setIsLiked(!isliked)} />
+            </div>
+          )  :(
+            <div className="absolute top-3 z-10 right-[-70px] group-hover:right-2 transition-all duration-500 ease-in-out flex flex-col gap-2">
+            <div className="bg-white cursor-pointer p-2 rounded-full flex items-center justify-center">
+              <Heart className="hover:text-third-100 "  onClick={()=>setIsLiked(!isliked)}/>
+            </div>
+            <div className="bg-white cursor-pointer p-2 rounded-full flex items-center justify-center">
+              <ShoppingCart className="hover:text-third-100" />
+            </div>
           </div>
-          <div className="bg-white cursor-pointer p-2 rounded-full flex items-center justify-center">
-            <ShoppingCart className="hover:text-third-100" />
-          </div>
-        </div>
+
+          )
+        }
+
+
+
+
+      
 
       </div>
-    </Link>
+    </div>
   );
 }
 

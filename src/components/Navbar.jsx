@@ -27,7 +27,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-4   lg:px-16 flex justify-between items-center py-3 bg-white shadow-md">
+    <nav className="fixed top-0 left-0 w-full z-50 px-4   lg:px-30 flex justify-between items-center py-3 bg-white shadow-md">
       <h1 className="text-2xl font-bold text-gray-800">RadStore</h1>
 
       <div className=" flex gap-8 items-center max-sm:hidden max-md:show">
