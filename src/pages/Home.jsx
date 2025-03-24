@@ -30,36 +30,51 @@ function Home() {
       name:'S-530',
       oldPrice:3500,
       Newprice:2800,
-      image:"/s530.png",
-      hoverImage:"/s530back.png"
+      images:[
+         "/s530.png",
+        "/s530back.png"
+      ]
+      
 
     }, {
-      id:1,
-      name:'S-530',
-      oldPrice:3500,
-      Newprice:2800,
-      image:"/s530.png",
-      hoverImage:"/s530back.png"
+      id:2,
+      name:'Germanglasses',
+      oldPrice:4000,
+      Newprice:3500,
+      images:[
+       "/glassesfront.png",
+       "/glassesback.png"
+      ]
+    
 
     }, {
-      id:1,
-      name:'S-530',
-      oldPrice:3500,
-      Newprice:2800,
-      image:"/s530.png",
-      hoverImage:"/s530back.png"
+      id:3,
+      name:'Appel watch',
+      oldPrice:8500,
+      Newprice:6800,
+      images:[
+       "/watchappelfront.jpg",
+        "/watchappelback.jpg"
+      ]
+      
 
     }, {
-      id:1,
-      name:'S-530',
-      oldPrice:3500,
-      Newprice:2800,
-      image:"/s530.png",
-      hoverImage:"/s530back.png"
+      id:4,
+      name:'Sprint jaket',
+      oldPrice:4500,
+      Newprice:3800,
+      images:[
+        "/sprintjaket1.png",
+       "/sprintjaket2.png",
+       "/sprintjaket3.png",
+       "/sprintjaket4.png"
+      ]
 
     }
 
   ]
+
+
 
 
   return (

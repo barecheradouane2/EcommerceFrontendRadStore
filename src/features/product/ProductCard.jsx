@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { Heart, ShoppingCart } from 'lucide-react';
 import { useState } from "react";
+import { useLikedProducts } from "../../Context/LikedProductsContext";
 
 function ProductCard({ product }) {
 
-  const [isliked, setIsLiked] = useState(false);
+  const {  toggleLike, isLiked } = useLikedProducts();
+
+ // const [isliked, setIsLiked] = useState(false);
 
 
   return (
@@ -15,14 +18,14 @@ function ProductCard({ product }) {
 
         <Link to={`/product/${product.id}`} className="w-full" >
         <img
-          src={product.image}
+          src={product.images[0]}
           alt="product"
           className=" w-full h-[250px] object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-0"
         />
 
         {/* Second Image (Shown on Hover) */}
         <img
-          src={product.hoverImage}
+          src={product.images[1]}
           alt="product-hover"
           className="w-full h-[250px] object-cover absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
         />
@@ -57,14 +60,14 @@ function ProductCard({ product }) {
 
 
         {
-          isliked ? (
+          isLiked (product.id) ? (
             <div className="absolute top-3 z-10 right-2 bg-white cursor-pointer p-2 rounded-full flex items-center justify-center">
-              <Heart className="text-third-100" onClick={() => setIsLiked(!isliked)} />
+              <Heart className="text-third-100" onClick={() => toggleLike(product.id)} />
             </div>
           )  :(
             <div className="absolute top-3 z-10 right-[-70px] group-hover:right-2 transition-all duration-500 ease-in-out flex flex-col gap-2">
             <div className="bg-white cursor-pointer p-2 rounded-full flex items-center justify-center">
-              <Heart className="hover:text-third-100 "  onClick={()=>setIsLiked(!isliked)}/>
+              <Heart className="hover:text-third-100 "  onClick={()=>toggleLike(product.id)}/>
             </div>
             <div className="bg-white cursor-pointer p-2 rounded-full flex items-center justify-center">
               <ShoppingCart className="hover:text-third-100" />

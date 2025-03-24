@@ -14,6 +14,7 @@ import ManageCategories from "./pages/ManageCategories";
 import ManageProfile from "./pages/ManageProfile";
 import SettingsPage from "./pages/SettingsPage";
 import ManageStore from "./pages/ManageStore";
+import Whishlist from "./pages/WhishListPage";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path ="/whishlist" element={<Whishlist />} />
         </Route>
 
         {/* Admin Routes */}

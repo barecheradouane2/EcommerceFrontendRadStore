@@ -12,7 +12,7 @@ function Footer() {
   }
   return (
     <div>
-      <div className=" border-t-1 border-black flex  flex-wrap mt-10  p-4 justify-between gap-10 ">
+      <div className=" border-t-1 border-black flex  flex-wrap mt-10  py-4 justify-between gap-10 ">
         <div className="flex-1 flex flex-col gap-4">
           <h1 className="text-2xl font-bold text-black">RadStore</h1>
           <div className="text-black flex gap-0.5">

@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React</title>
   </head>
+
+  <style>
+    @keyframes shakeX {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+  
+    .animate-shake-x {
+      animation: shakeX 0.5s ease-in-out infinite;
+    }
+  </style>
+  
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
