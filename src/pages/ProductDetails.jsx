@@ -1,9 +1,20 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-import { Heart, Share2, Plus, Minus, ShoppingCart } from "lucide-react";
+import { Heart, Share2, Plus, Minus, ShoppingCart , ChevronRight, ChevronLeft } from "lucide-react";
 import { useLikedProducts } from "../Context/LikedProductsContext";
+import Slider from "react-slick";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import { useOrdersItem } from "../Context/OrdersItemContext";
+
+
 
 function ProductDetails() {
+
+  const { ordersItem, toggleOrder, isOrdered } = useOrdersItem();
+
   const Products = [
     {
       id: 1,
@@ -26,8 +37,8 @@ function ProductDetails() {
       description:
         "The German Glasses are a high-quality pair of sunglasses that are designed to provide you with the best protection from the sun. They are made from durable materials and have a stylish design that will make you stand out from the crowd. The German Glasses are ",
 
-      Couleur: "",
-      Pointure: "",
+      Couleur: [],
+      Pointure: [],
     },
     {
       id: 3,
@@ -37,8 +48,8 @@ function ProductDetails() {
       images: ["/watchappelfront.jpg", "/watchappelback.jpg"],
       description:
         "The Apple Watch is a smartwatch that is designed to work seamlessly with your iPhone. It has a sleek design and a range of features that make it the perfect accessory for your busy lifestyle. The Apple Watch is available in a variety of colors and styles, so you can choose the one that best suits your personal style. It is water-resistant and has a long battery life, so you can wear it all day without having to worry about charging it. The Apple Watch is perfect for tracking your fitness goals, staying connected with friends and family, and managing your schedule. ",
-      Couleur: "",
-      Pointure: "",
+      Couleur: [],
+      Pointure: [],
     },
     {
       id: 4,
@@ -50,6 +61,9 @@ function ProductDetails() {
         "/sprintjaket2.png",
         "/sprintjaket3.png",
         "/sprintjaket4.jpg",
+        "/sprintjaket11.jpg",
+        "/sprintjaket12.jpg",
+        "/sprintjaket13.jpg",
       ],
       description:
         "The Sprint Jacket is a high-quality jacket that is designed to keep you warm and dry in all weather conditions. It is made from durable materials and has a stylish design that will make you stand out from the crowd. The Sprint Jacket is perfect for outdoor activities such as hiking, camping, and skiing. It is available in a variety of colors and sizes, so you can choose the one that best suits your needs. The Sprint Jacket is also machine washable, making it easy to clean and maintain. ",
@@ -58,9 +72,12 @@ function ProductDetails() {
     },
   ];
 
+
+
   const [count, setcount] = useState(1);
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(0);
 
    const {  toggleLike, isLiked } = useLikedProducts();
 
@@ -72,11 +89,14 @@ function ProductDetails() {
 
   const [productimglist, setproductimglist] = useState(productDetails.images);
 
-  const changeImage = (image) => {
-    setproductimglist([
-      image,
-      ...productimglist.filter((img) => img !== image),
-    ]);
+  const changeImage = (image,index) => {
+    // setproductimglist([
+    //   image,
+    //   ...productimglist.filter((img) => img !== image),
+
+    // ]);
+    
+    setSelectedImage(index);
   };
 
   const handleMinus =()=>{
@@ -85,30 +105,108 @@ function ProductDetails() {
     }
   }
 
+  const SampleNextArrow = ({ onClick }) => {
+
+   // setSelectedImage((selectedImage + 1)%productimglist.length);
+
+    return (
+      <div
+      onClick={onClick}
+        className=" hover:bg-black hover:text-white   rounded-full  absolute right-[-15px] top-1/2 transform -translate-y-1/2 z-10 cursor-pointer"
+      >
+        {/* Icon here */}
+
+        <ChevronRight  size={39}/>
+
+
+      </div>
+    );
+  };
+
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        onClick={onClick}
+        className=" hover:bg-black hover:text-white   rounded-full absolute left-[-15px] top-1/2 transform -translate-y-1/2 z-10 cursor-pointer"
+      >
+        {/* Icon here */}
+
+        <ChevronLeft  size={39}/>
+
+
+      </div>
+    );
+  }
+
+  var settings = {
+    dots: true,
+    arrows: true,
+    infinite: true,
+    speed: 100,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrow    />,
+    prevArrow: <SamplePrevArrow />,
+ 
+  };
+
+
+
+
+  const HandleOrder = () => {
+    if (!selectedSize || !selectedColor) {
+      alert("Please select size and color.");
+      return;
+    }
+  
+    const orderItem = {
+     id :ordersItem.length+1,
+     name: productDetails.name,
+      Newprice: productDetails.Newprice,
+      images: productDetails.images,
+      size: selectedSize,
+      color: selectedColor,
+      quantity: count,
+    };
+  
+    toggleOrder(orderItem);
+  };
+  
+
+
+
   return (
     <div className="flex flex-col gap-10  justify-center mt-[70px]  ">
       <div className="flex flex-col md:flex-row gap-5  ">
         <div className="w-full md:w-1/2    ">
-          <div className=" border h-[500px]">
+          <div className=" border border-small-100 h-[500px]">
             <img
-              src={productimglist[0]}
+              src={productimglist[selectedImage]}
               alt=""
               className="w-full h-full object-cover"
             />
           </div>
 
-          <div className="flex gap-5 border cursor-pointer">
-            {productimglist.slice(1).map((image, index) => (
-              <div key={index} className="w-1/4">
+       
+
+          <Slider {...settings} className="flex gap-5 border border-small-100 cursor-pointer">
+            {productimglist.map((image, index) => (
+
+              <div key={index} className={`w-1/4  ${selectedImage === index ? 'border border-red-900' : ''}`}>
                 <img
                   src={image}
                   alt=""
                   className="w-full h-full object-cover"
-                  onClick={() => changeImage(image)}
+                  onClick={() => changeImage(image,index)}
                 />
               </div>
             ))}
-          </div>
+          </Slider>
+
+       
+
+         
         </div>
         <div className="w-full md:w-1/2  flex flex-col gap-5 ">
           <h3 className="text-2xl font-bold"> {productDetails.name} </h3>
@@ -200,7 +298,7 @@ function ProductDetails() {
               {" "}
               <Plus />
             </button>
-            <button className="border border-small-100 flex gap-2 cursor-pointer w-full justify-center  py-2 px-5 rounded-lg hover:bg-main-100 ">
+            <button onClick={()=>HandleOrder()} className="border border-small-100 flex gap-2 cursor-pointer w-full justify-center  py-2 px-5 rounded-lg hover:bg-main-100 ">
               <ShoppingCart /> Order
             </button>
           </div>
