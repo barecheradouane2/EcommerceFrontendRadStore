@@ -50,16 +50,16 @@ function OrderItem({ order }) {
           <img src={order.images[0]} alt="" className="object-cover w-full h-full" />
         </div>
         <div className="flex-1 ">
-          <h3 className="font-bold">{order.name}</h3>
+          <h3 className="">{order.name}</h3>
           <span>
-            Unit Price : <span className="font-bold">{order.Newprice}</span>
+            Unit Price : <span className=" text-gray-800 font-semibold">{order.Newprice}.00 DZD</span>
           </span>
          
         </div>
         <div>
-          <strong >
-            {count * order.Newprice}
-          </strong>
+          <span className="font-semibold" >
+            {count * order.Newprice}.00 DZD
+          </span>
         </div>
       </div>
 

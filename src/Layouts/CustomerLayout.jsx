@@ -10,7 +10,7 @@ const CustomerLayout = () => {
     return (
       <div className=" px-4 lg:px-30 ">
         <Navbar likedProductsCount={likedProducts.length} />
-        <main className=" ">
+        <main className="">
           <Outlet className="" />
         </main>
         <Footer />

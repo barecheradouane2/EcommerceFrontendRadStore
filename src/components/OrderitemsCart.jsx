@@ -7,6 +7,9 @@ import { ShoppingBag } from 'lucide-react';
 import { X } from 'lucide-react';
 import { useEffect } from 'react';
 
+import { Link } from 'react-router-dom';
+
+
 
 
 function OrderitemsCart({orders,showcart,setshowcart}) {
@@ -75,9 +78,12 @@ function OrderitemsCart({orders,showcart,setshowcart}) {
             <strong>{TotalPrice} DZD</strong>
           </div>
 
-          <button className="bg-third-100 cursor-pointer text-white px-4 py-2 rounded animate-shake-x">
+          <Link  to="/checkout" className="bg-third-100  flex justify-center items-center  cursor-pointer text-white px-4 py-2 rounded animate-shake-x">
+            
+
+            
             Order
-          </button>
+          </Link>
         </div>
 
           )
