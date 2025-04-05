@@ -82,8 +82,8 @@ function Home() {
 
      <div className=" grid  sm:grid-cols-1 md:grid-cols-2  gap-4  ">
       {
-        Categories.map((category)=>(
-          <CategoryItem key={category.id} url={category.url} Title={category.name} />
+        Categories.map((category,index)=>(
+          <CategoryItem  index={index+1} key={category.id} url={category.url} Title={category.name} />
         ))
       }
 

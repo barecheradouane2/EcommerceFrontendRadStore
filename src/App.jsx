@@ -15,6 +15,7 @@ import ManageProfile from "./pages/ManageProfile";
 import SettingsPage from "./pages/SettingsPage";
 import ManageStore from "./pages/ManageStore";
 import Whishlist from "./pages/WhishListPage";
+import ProductsCategory from "./pages/ProductsCategory";
 
 
 function App() {
@@ -27,6 +28,10 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+
+          < Route path="/Categories" element={<ProductsCategory />} />
+          <Route path="/Categories/:id" element={<ProductsCategory />} />
+        
           <Route path="/checkout" element={<Checkout />} />
           <Route path ="/whishlist" element={<Whishlist />} />
         </Route>
